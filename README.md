@@ -1,6 +1,6 @@
 # Career-Decision-Maker
-Link for detailed Description - [https://docs.google.com/document/d/1K8J_JVGTZlKqeZMGMI9SGNgwZpId8xL8cEPMa4B39dY/edit?usp=sharing](url)
-Link for the Video - [https://drive.google.com/file/d/14eP2uwX-VbDUEaOiBWwomgoQz6Gbhibw/view?usp=sharing](url)
+Link for detailed Description - [https://docs.google.com/document/d/1K8J_JVGTZlKqeZMGMI9SGNgwZpId8xL8cEPMa4B39dY/edit?usp=sharing]
+Link for the Video - [https://drive.google.com/file/d/14eP2uwX-VbDUEaOiBWwomgoQz6Gbhibw/view?usp=sharing]
 
 Problem Statement:
 Design and develop a user-friendly web application that harnesses the capabilities of the Chatbot GPT API to provide personalized career guidance. 
