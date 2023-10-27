@@ -32,6 +32,7 @@ app.post('/getRecommendedCareers', async (req, res) => {
                 ${projects.length > 0 ? 'My projects include ' + projects.join(', ') + '.' : 'I have no specific projects at the moment.'}`,
                 language: 'en' }
             ]
+            max_tokens: 100
         });
         const data = await response.json();
         res.header('Access-Control-Allow-Origin', '*'); 
