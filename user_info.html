@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information and Careers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #4e54c8, #e28ffb);            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .coc{
+            display: flex;
+        }
+
+        .coc p {
+            margin-right: 20px;
+        }
+
+        .user-info {
+            margin-bottom: 20px;
+        }
+
+        .user-info p {
+            margin-bottom: 5px;
+        }
+
+        .recommended-careers {
+            margin-top: 30px;
+        }
+
+        .recommended-careers h2 {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            padding: 8px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #loadingPrompt {
+            margin-top: 20px;
+            font-style: italic;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-info">
+            <h2>User Information:</h2>
+            <p><strong>Stream:</strong> <span id="Stream"></span></p>
+            <div class="coc">
+            <p><strong>Masters Done:</strong> <span id="mastersDoneInfo"></span></p>
+            <p><strong>PhD Done:</strong> <span id="phdDoneInfo"></span></p>
+            </div>
+            <p><strong>Masters Details:</strong> <span id="mastersDetailsInfo"></span></p>
+            <p><strong>Bachelors Details:</strong> <span id="bachelorsDetailsInfo"></span></p>
+            <p><strong>Interests:</strong> <span id="interestsInfo"></span></p>
+            <p><strong>Skills:</strong> <span id="skillsInfo"></span></p>
+            <p><strong>Projects:</strong></p>
+            <ul id="projectsList">
+            </ul>
+        </div>
+
+        <p id="loadingPrompt">Please wait...</p>
+        <div class="recommended-careers" style="display:none">
+            <h2>Recommended Careers:</h2>
+            <ul id="careersList" >
+                <li>Machine Learning Engineer: Utilize expertise in Python, Keras, and PyTorch to develop and implement machine learning models for various applications, including natural language processing and sentiment analysis, aligning with the individual's interest in machine learning and programming.</li>
+                <li>Data Scientist: Apply advanced data analysis techniques using Python and tools like PyTorch and Keras to extract valuable insights from complex datasets, particularly in the realm of market sentiment analysis, aligning with the student's projects in sentiment analysis on the market and interest in programming and data science.</li>
+                <li>AI Research Scientist: Conduct cutting-edge research in artificial intelligence, leveraging Python, Keras, and PyTorch skills to develop innovative algorithms and models, focusing on areas such as natural language processing and humor generation, aligning with the individual's expertise and interest in AI and machine learning.</li>
+                <li>Software Developer/Engineer: Utilize programming languages like Python, JavaScript, and C++ to design and develop software applications with a focus on AI and data science, contributing to the development of tools and technologies that support data analysis and machine learning.</li>
+                <li>NLP (Natural Language Processing) Engineer: Apply knowledge of Python, Keras, and PyTorch to develop and optimize natural language processing algorithms, particularly in the context of sentiment analysis and humor generation, aligning with the individual's interest in machine learning and expertise in relevant programming languages.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            //retriveing everything from URL
+            var params = new URLSearchParams(window.location.search);
+            document.getElementById('Stream').innerText = params.get('stream');
+            document.getElementById('mastersDoneInfo').innerText = params.get('mastersDone');
+            document.getElementById('mastersDetailsInfo').innerText = params.get('mastersDetails');
+            document.getElementById('bachelorsDetailsInfo').innerText = params.get('bachelorsDetails');
+            document.getElementById('phdDoneInfo').innerText = params.get('phdDone');
+            document.getElementById('interestsInfo').innerText = params.get('interests');
+            var projects = params.getAll('projects');
+            var projectsList = document.getElementById('projectsList');
+            projects.forEach(function (project) {
+                var li = document.createElement('li');
+                li.innerText = project;
+                projectsList.appendChild(li);
+            });
+            document.getElementById('skillsInfo').innerText = params.get('skills');
+            setTimeout(function() {document.getElementById('loadingPrompt').style.display = 'none';
+            document.querySelector('.recommended-careers').style.display = 'block';},11000);
+            var skills = params.get('skills');
+            var interests = params.get('interests');
+            var degree= params.get('degree')
+            var deginfo=params.get('bachelorsDetails')
+            var masters=params.get('mastersDetails')
+            var phd=params.get('phdDetails')
+            var projects=params.getAll('projects')
+
+            fetch('http://localhost:3000/getRecommendedCareers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ skills: skills, interests: interests , degree:degree, deginfo:deginfo, projects:projects, masters:masters, phd:phd})
+            })
+            .then(response => response.json())
+            .then(data => {
+                var recommendedCareers = data.careers;
+                document.getElementById('loadingPrompt').style.display = 'none';
+                document.querySelector('.recommended-careers').style.display = 'block';
+                var careersList = document.getElementById('careersList');
+                var careers = recommendedCareers.split(',');
+                careers.forEach(function (career) {
+                    var li = document.createElement('li');
+                    li.innerText = career.trim();
+                    careersList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+
+        };  
+    </script>
+</body>
+</html>

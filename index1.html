@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #522583, #e28ffb);
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+    
+        .form-row {
+            margin-bottom: 20px;
+        }
+    
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    
+        .input-field {
+            margin-top: 5px;
+        }
+    
+        input[type="checkbox"] {
+            margin-top: 5px;
+        }
+        .input-field {
+        display: flex;
+        align-items: center;
+    }
+
+    input[type="radio"] {
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+
+    /* Adjust as necessary for the radio button labels */
+    input[type="radio"] + label {
+        margin-right: 15px;
+    }
+    
+        select,
+        textarea,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    
+        #projectsContainer {
+            margin-top: 10px;
+        }
+    
+        .project {
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+        }
+
+        .project-item{
+            display:flex;
+        }
+    
+        #addProject {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        #addProject:hover {
+            background-color: #45a049;
+        }
+    
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    
+        .display-info {
+            margin-top: 30px;
+        }
+    
+        .display-info h2 {
+            margin-bottom: 10px;
+        }
+    
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    
+        ul li {
+            margin-bottom: 5px;
+        }
+        .close {
+    color: #f44336;
+    float: left;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#addProject {
+    margin-top: 10px;
+}
+    </style>
+    
+</head>
+<body>
+    <div style="display: flex; align-items: center;">
+        <h1 style="margin-right: 10px;">Career Decision Maker</h1>
+        <img src="ing4.png" alt="Career Maker Logo" style="max-width: 50px; max-height: 50px; background-color: linear-gradient(to bottom, #4e54c8, #e28ffb);">
+    </div>
+    <div class="container">
+        <h1>User Details Form</h1>
+        <form id="userForm">
+
+            <div class="form-row">
+                <label for="stream">Stream in 12th:</label>
+                <div class="input-field">
+                    <select id="stream" name="stream">
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Biology">Biology</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="degree">Degree:</label>
+                <div class="input-field">
+                    <select id="degree" name="degree">
+                        <option value="Bachelor of Science">Bachelor of Science</option>
+                        <option value="Bachelor of Arts">Bachelor of Arts</option>
+                        <option value="Bachelor of Commerce">Bachelor of Commerce</option>
+                        <option value="Bachelor of Engineering">Bachelor of Engineering</option>
+                        <option value="Bachelor of Technology">Bachelor of Technology</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row" id="bachelorsDetailsContainer" >
+                <label for="bachelorsDetails">Bachelors Details:</label>
+                <div class="input-field">
+                    <textarea id="bachelorsDetails" name="bachelorsDetails"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="mastersDone">Done Masters:</label>
+                <div class="input-field">
+                    <input type="radio" id="mastersDoneYes" name="mastersDone" value="Yes">
+                    <label for="mastersDoneYes">Yes</label>
+                    <input type="radio" id="mastersDoneNo" name="mastersDone" value="No" >
+                    <label for="mastersDoneNo">No</label>
+                </div>
+            </div>
+
+            <div class="form-row" id="mastersDetailsContainer" style="display: none;">
+                <label for="mastersDetails">Masters Details:</label>
+                <div class="input-field">
+                    <textarea id="mastersDetails" name="mastersDetails"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="phdDone">Done PhD:</label>
+                <div class="input-field">
+                    <input type="radio" id="phdDoneYes" name="phdDone" value="Yes">
+                    <label for="phdDoneYes">Yes</label>
+                    <input type="radio" id="phdDoneNo" name="phdDone" value="No" >
+                    <label for="phdDoneNo">No</label>
+                </div>
+            </div>
+
+            <div class="form-row" id="phdDetailsContainer" style="display: none;">
+                <label for="phdDetails">PhD Details:</label>
+                <div class="input-field">
+                    <textarea id="phdDetails" name="phdDetails"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="interests">Interests:</label>
+                <div class="input-field">
+                    <input type="text" id="interests" name="interests">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>Projects:</label>
+                <div class="input-field1">
+                    <div id="projectsContainer">
+                        <div class="project-item">
+                            <span class="close" onclick="removeProject(this)">&times;</span>
+                            <textarea class="project" name="project"></textarea>
+                        </div>
+                    </div>
+                    <button type="button" id="addProject">Add Project</button>
+                </div>
+            </div>
+            
+
+            <div class="form-row">
+                <label for="skills">Skills:</label>
+                <div class="input-field">
+                    <textarea id="skills" name="skills"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="input-field">
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+
+        <div id="displayArea" class="display-info"></div>
+    </div>
+
+    <script>
+
+        document.getElementById('mastersDoneYes').addEventListener('click', function () {
+            document.getElementById('mastersDetailsContainer').style.display = 'block';
+        });
+
+        document.getElementById('mastersDoneNo').addEventListener('click', function () {
+            document.getElementById('mastersDetailsContainer').style.display = 'none';
+        });
+
+        document.getElementById('phdDoneYes').addEventListener('click', function () {
+            document.getElementById('phdDetailsContainer').style.display = 'block';
+        });
+
+        document.getElementById('phdDoneNo').addEventListener('click', function () {
+            document.getElementById('phdDetailsContainer').style.display = 'none';
+        });
+        function removeProject(element) {
+        element.parentNode.remove();
+    }
+
+    document.getElementById('userForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var userData = {
+                stream: document.getElementById('stream').value,
+                degree: document.getElementById('degree').value,
+                mastersDone: document.querySelector('input[name="mastersDone"]:checked').value,
+                mastersDetails: document.getElementById('mastersDetails').value,
+                bachelorsDetails: document.getElementById('bachelorsDetails').value,
+                phdDone: document.querySelector('input[name="phdDone"]:checked').value,
+                phdDetails: document.getElementById('phdDetails').value,
+                interests: document.getElementById('interests').value,
+                projects: [],
+                skills: document.getElementById('skills').value,
+            };
+
+            var projects = document.getElementsByClassName('project');
+            for (var i = 0; i < projects.length; i++) {
+                userData.projects.push(projects[i].value);
+            }
+
+            // Construct the URL with the form data as parameters
+            var urlParams = new URLSearchParams();
+            for (var key in userData) {
+                if (userData.hasOwnProperty(key)) {
+                    if (Array.isArray(userData[key])) {
+                        userData[key].forEach(function (item) {
+                            urlParams.append(key, item);
+                        });
+                    } else {
+                        urlParams.append(key, userData[key]);
+                    }
+                }
+            }
+
+            window.location.href = 'user_info.html?' + urlParams.toString();
+        });
+
+    document.getElementById('addProject').addEventListener('click', function () {
+        var projectsContainer = document.getElementById('projectsContainer');
+        var projectItem = document.createElement('div');
+        projectItem.classList.add('project-item');
+        var closeButton = document.createElement('span');
+        closeButton.classList.add('close');
+        var textarea = document.createElement('textarea');
+        textarea.classList.add('project');
+        textarea.name = 'project';
+        closeButton.appendChild(document.createTextNode('\u00D7'));
+        closeButton.onclick = function() {
+            removeProject(this);
+        };
+        projectItem.appendChild(closeButton);
+        projectItem.appendChild(textarea);
+        projectsContainer.appendChild(projectItem);
+    });
+    
+    </script>
+</body>
+</html>
