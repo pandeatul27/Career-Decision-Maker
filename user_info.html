@@ -85,11 +85,6 @@
         <div class="recommended-careers" style="display:none">
             <h2>Recommended Careers:</h2>
             <ul id="careersList" >
-                <li>Machine Learning Engineer: Utilize expertise in Python, Keras, and PyTorch to develop and implement machine learning models for various applications, including natural language processing and sentiment analysis, aligning with the individual's interest in machine learning and programming.</li>
-                <li>Data Scientist: Apply advanced data analysis techniques using Python and tools like PyTorch and Keras to extract valuable insights from complex datasets, particularly in the realm of market sentiment analysis, aligning with the student's projects in sentiment analysis on the market and interest in programming and data science.</li>
-                <li>AI Research Scientist: Conduct cutting-edge research in artificial intelligence, leveraging Python, Keras, and PyTorch skills to develop innovative algorithms and models, focusing on areas such as natural language processing and humor generation, aligning with the individual's expertise and interest in AI and machine learning.</li>
-                <li>Software Developer/Engineer: Utilize programming languages like Python, JavaScript, and C++ to design and develop software applications with a focus on AI and data science, contributing to the development of tools and technologies that support data analysis and machine learning.</li>
-                <li>NLP (Natural Language Processing) Engineer: Apply knowledge of Python, Keras, and PyTorch to develop and optimize natural language processing algorithms, particularly in the context of sentiment analysis and humor generation, aligning with the individual's interest in machine learning and expertise in relevant programming languages.</li>
             </ul>
         </div>
     </div>
@@ -112,8 +107,8 @@
                 projectsList.appendChild(li);
             });
             document.getElementById('skillsInfo').innerText = params.get('skills');
-            setTimeout(function() {document.getElementById('loadingPrompt').style.display = 'none';
-            document.querySelector('.recommended-careers').style.display = 'block';},11000);
+            // setTimeout(function() {document.getElementById('loadingPrompt').style.display = 'none';
+            // document.querySelector('.recommended-careers').style.display = 'block';},11000);
             var skills = params.get('skills');
             var interests = params.get('interests');
             var degree= params.get('degree')
